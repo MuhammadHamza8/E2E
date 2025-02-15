@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     // Install Node.js if not already installed
-                    //sh 'node -v || curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && sudo apt-get install -y nodejs'
+                    sh 'node -v || curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && sudo apt-get install -y nodejs'
 
                     // Install dependencies
                     sh 'npm install' 
