@@ -6,11 +6,11 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/your-repo.git' // Change to your repo
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         git branch: 'main', url: 'https://github.com/your-repo.git' // Change to your repo
+        //     }
+        // }
 
         stage('Setup Node.js') {
             steps {
