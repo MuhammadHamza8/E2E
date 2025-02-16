@@ -34,12 +34,7 @@ pipeline {
             }
         }
 
-        stage('Archive Test Results') {
-            steps {
-                junit '**/test-results/**/*.xml'
-                archiveArtifacts artifacts: '**/test-results/**', fingerprint: true
-            }
-        }
+        
     }
 
     post {
