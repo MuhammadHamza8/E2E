@@ -1,26 +1,18 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'nodejs' // Ensure you have configured this in "Global Tool Configuration"
+    }
+
     environment {
-        NODE_VERSION = '18' // Adjust as needed
+        PLAYWRIGHT_BROWSERS_PATH = './.cache/ms-playwright' // Optional: Cache Playwright browsers
     }
 
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         git branch: 'main', url: 'https://github.com/your-repo.git' // Change to your repo
-        //     }
-        // }
-
-        stage('Setup Node.js') {
+        stage('Checkout') {
             steps {
-                script {
-                    def nodeExists = sh(script: 'command -v node', returnStatus: true) == 0
-                    if (!nodeExists) {
-                        error("Node.js is not installed. Install it manually or use a Node.js Docker agent.")
-                    }
-                }
-                sh 'node -v' // Check Node version
+                git branch: 'main', url: 'https://github.com/MuhammadHamza8/E2E.git/' // Update your repo
             }
         }
 
@@ -38,13 +30,13 @@ pipeline {
 
         stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright test --reporter=dot' // Change reporter if needed
+                sh 'npx playwright test --reporter=dot'
             }
         }
 
         stage('Archive Test Results') {
             steps {
-                junit '**/test-results/**/*.xml' // Adjust the path if using JUnit XML
+                junit '**/test-results/**/*.xml'
                 archiveArtifacts artifacts: '**/test-results/**', fingerprint: true
             }
         }
@@ -62,5 +54,3 @@ pipeline {
         }
     }
 }
-
-
