@@ -13,7 +13,7 @@ test('has title', async ({ page }) => {
 test('form filling ',async ({ page }) => {
 
   await page.goto('https://demoqa.com/text-box');
-  await page.waitForTimeout(2000);
+
   await page.locator('#userName').fill('muhammad Ali');
   await page.locator('#userEmail').fill('hamzaicp54@gmail.com');
   await page.locator('#currentAddress').fill('Pakistan islamabad');
