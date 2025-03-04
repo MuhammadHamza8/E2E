@@ -31,19 +31,20 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot: 'only-on-failure', // Capture screenshot only when a test fails
+    // video: 'on', // Enables video recording for all tests
   },
 
   /* Configure projects for major browsers */
   projects: [
-   {
-    //   name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+  //  {
+  // //   //   name: 'chromium',
+  //  use: { ...devices['Desktop Chrome'] },
+  //     },
 
-    {
-    //   name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+  //    {
+  // //   //   name: 'firefox',
+  //      use: { ...devices['Desktop Firefox'] },
+  //   },
 
     {
       name: 'webkit',
